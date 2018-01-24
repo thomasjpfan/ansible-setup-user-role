@@ -1,4 +1,0 @@
----
-
-deploy_local_private_key: "{{ deploy_local_ssh_key_dir }}/private/{{ inventory_hostname }}.pem"
-deploy_local_public_key: "{{ deploy_local_ssh_key_dir }}/public/{{ inventory_hostname }}.pub"

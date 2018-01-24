@@ -2,11 +2,7 @@
 
 [![Build Status](https://travis-ci.org/thomasjpfan/ansible-setup-user-role.svg?branch=master)](https://travis-ci.org/thomasjpfan/ansible-setup-user-role)
 
-Setups User with SSH keys
-
-## Requirements
-
-`python-pyOpenSSL`
+Setups User and SSH keys
 
 ## Role Varialbes
 
@@ -15,8 +11,8 @@ Setups User with SSH keys
 deploy_user: deploy
 deploy_groups: ["docker"]
 
-# Local dir to place ssh_keys
-deploy_local_ssh_key_dir: ssh_keys
+# Public key to include in authorized_key
+deploy_local_public_key:
 ```
 
 ## Testing

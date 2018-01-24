@@ -11,22 +11,16 @@
     name: "{{ deploy_user }}"
     groups: "{{ deploy_groups }}"
 
-- name: Create local ssh directory
-  local_action:
-    module: file
-    path: "{{ item }}"
-    state: directory
-    recurse: yes
-  with_items:
-    - "{{ deploy_local_ssh_key_dir }}/private"
-    - "{{ deploy_local_ssh_key_dir }}/public"
+- name: Fail when deploy_local_public_key is none
+  fail:
+    msg: deploy_local_public_key must be set
+  when: deploy_local_public_key is none
 
-- name: Generate private key
-  local_action:
-    module: openssl_privatekey
-    path: "{{ deploy_local_private_key }}"
+- name: Add Authorized Key
+  authorized_key:
+    user:  "{{ deploy_user }}"
     state: present
-  notify:
-    - Remove Public Key
-    - Generate Public Key
-    - Add Authorized Key
+    key: "{{ lookup('file', deploy_local_public_key) }}"
+    comment: ansible
+  when:
+    - deploy_local_public_key is not none

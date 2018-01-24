@@ -30,3 +30,9 @@ cycle: setup_local_test test clean_up
 
 clean_up:
 	docker stop $(CONTAINER_NAME)
+
+
+.PHONY: create_keys
+
+create_keys:
+	ssh-keygen -f tests/id_deploy -t ecdsa -b 256 -P ""

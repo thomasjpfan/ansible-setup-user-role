@@ -2,7 +2,7 @@
 galaxy_info:
   author: Thomas Fan
   license: MIT
-  description: Setups User with SSH keys
+  description: Setups User and SSH keys
   min_ansible_version: 2.4
   platforms:
     - name: Ubuntu
