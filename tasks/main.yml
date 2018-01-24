@@ -30,3 +30,10 @@
     comment: ansible
   when:
     - deploy_local_public_key is not none
+
+- name: Add user to sudoers
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: "{{ deploy_user }} ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
