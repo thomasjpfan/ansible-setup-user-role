@@ -1,0 +1,32 @@
+---
+
+- name: Add groups
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ deploy_groups }}"
+
+- name: Add users
+  user:
+    name: "{{ deploy_user }}"
+    groups: "{{ deploy_groups }}"
+
+- name: Create local ssh directory
+  local_action:
+    module: file
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ deploy_local_ssh_key_dir }}/private"
+    - "{{ deploy_local_ssh_key_dir }}/public"
+
+- name: Generate private key
+  local_action:
+    module: openssl_privatekey
+    path: "{{ deploy_local_private_key }}"
+    state: present
+  notify:
+    - Remove Public Key
+    - Generate Public Key
+    - Add Authorized Key

@@ -1,0 +1,7 @@
+---
+
+- hosts: all
+  vars:
+    - deploy_local_ssh_key_dir: ssh_keys
+  roles:
+    - { role: role_to_test }
