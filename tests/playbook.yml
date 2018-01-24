@@ -3,5 +3,6 @@
 - hosts: all
   vars:
     - deploy_local_public_key: id_deploy.pub
+    - deploy_groups: ["docker"]
   roles:
     - { role: role_to_test }

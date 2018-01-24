@@ -35,4 +35,4 @@ clean_up:
 .PHONY: create_keys
 
 create_keys:
-	ssh-keygen -f tests/id_deploy -t ecdsa -b 256 -P ""
+	ssh-keygen -f tests/id_deploy -t ecdsa -b 256 -P "" -C ""
