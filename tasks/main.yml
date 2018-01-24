@@ -1,5 +1,15 @@
 ---
 
+- name: Fail when deploy_local_public_key is none
+  fail:
+    msg: deploy_local_public_key must be set
+  when: deploy_local_public_key is none
+
+- name: Fail when deploy_hashed_password is none
+  fail:
+    msg: deploy_hashed_password must be set
+  when: deploy_hashed_password is none
+
 - name: Add groups
   group:
     name: "{{ item }}"
@@ -10,11 +20,7 @@
   user:
     name: "{{ deploy_user }}"
     groups: "{{ deploy_groups }}"
-
-- name: Fail when deploy_local_public_key is none
-  fail:
-    msg: deploy_local_public_key must be set
-  when: deploy_local_public_key is none
+    password: "{{ deploy_hashed_password }}"
 
 - name: Add Authorized Key
   authorized_key:

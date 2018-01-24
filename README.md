@@ -13,6 +13,9 @@ deploy_groups: ["docker"]
 
 # Public key to include in authorized_key
 deploy_local_public_key:
+
+# Hashedp password for deploy user
+deploy_hashed_password:
 ```
 
 ## Testing
