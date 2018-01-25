@@ -40,20 +40,6 @@ make test
 make clean_up
 ```
 
-## Local Testing
-
-The `tests/playbook.yml` file includes a pre-tasks that adds a ubuntu cacher configuration for local testing. You can start your own cacher by running:
-
-```bash
-docker run --name apt-cacher -d --restart=always \
-  --publish 3142:3142 \
-  --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
-  --network ng \
-  sameersbn/apt-cacher-ng:latest
-```
-
-To use to cache for local testing run `make setup_local_test` instead of `make setup_test`.
-
 ## License
 
 MIT

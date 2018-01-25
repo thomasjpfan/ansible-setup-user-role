@@ -10,16 +10,6 @@ setup_test:
 	-h $(CONTAINER_NAME) \
 	thomasjpfan/ansible-ubuntu-local-runner:$(TEST_CONTAINER_TAG)
 
-setup_local_test:
-	docker run --rm --privileged -d --name $(CONTAINER_NAME) \
-	-v $(PWD):/etc/ansible/roles/role_to_test \
-	-v /sys/fs/cgroup:/sys/fs/cgroup:ro  \
-	-v $(PWD)/dep_roles:/root/.ansible/roles -t \
-	-e ANSIBLE_PLAYBOOK_ARGS="-e docker_use_local_cache=true" \
-	--network ng \
-	-h $(CONTAINER_NAME) \
-	thomasjpfan/ansible-ubuntu-local-runner:$(TEST_CONTAINER_TAG)
-
 cli:
 	docker exec -ti $(CONTAINER_NAME) /bin/bash
 
