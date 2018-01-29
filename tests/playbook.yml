@@ -2,8 +2,8 @@
 
 - hosts: all
   vars:
-    - deploy_local_public_key: id_deploy.pub
-    - deploy_groups: ["docker"]
-    - deploy_hashed_password: $6$p728p3uvI83BzjIN$kIILH6xlNPtMHmpjg/MKizVS2ioNUKJJln.vXbiYhjmecJ/qKQKBoYGk/38lHrvNrcc2PtS0siy0llX.1LXQE.
+    deploy_local_public_key: id_deploy.pub
+    deploy_groups: ["docker"]
+    deploy_hashed_password: $6$p728p3uvI83BzjIN$kIILH6xlNPtMHmpjg/MKizVS2ioNUKJJln.vXbiYhjmecJ/qKQKBoYGk/38lHrvNrcc2PtS0siy0llX.1LXQE.
   roles:
     - { role: role_to_test }
